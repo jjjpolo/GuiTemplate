@@ -12,11 +12,16 @@
 # Notes:             
 # ==================================================================================
 
+from loggingWrapper import createLogger, logging    #importing only the function to instantiate a logger
+                                                    # and the logging class to set the logging level.
 
+
+# ----------------------------------------------------------------------------------
 # Name:            Main
-# Purpose:         Starts the main function from the main file
-# Parameter:       None                    
+# Purpose:         Starts the main function from the main file.
+# Parameter:       None
 def main():
-    print("Building...")
+    appLogger = createLogger("testingApp", "test.log", logging.DEBUG)
+    appLogger.info("Hello logging world!")
 
 main()
