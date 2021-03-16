@@ -14,6 +14,7 @@
 
 from loggingWrapper import createLogger, logging    #importing only the function to instantiate a logger
                                                     # and the logging class to set the logging level.
+from mainGui import mainGuiClass
 
 
 # ----------------------------------------------------------------------------------
@@ -23,5 +24,7 @@ from loggingWrapper import createLogger, logging    #importing only the function
 def main():
     log = createLogger("testingApp", "test.log", logging.DEBUG)
     log.info("Hello logging world!")
+    myGui = mainGuiClass(log)
+    myGui.run()
 
 main()
