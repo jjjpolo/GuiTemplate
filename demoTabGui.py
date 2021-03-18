@@ -1,18 +1,38 @@
+#TODO-BUILDING add header
+# ==================================================================================
+# File Name: demoTabGui.py
+# ==================================================================================
+# Purpose:         This file contains a demo (proposal) of how to place content 
+#                  in a tab. As you can see, the idea is to create an object
+#                  (instance) of a tab (ttk.Frame) and pass it to this class (through 
+#                  the constructor) so this class (demoTabGuiClass) will use it as if 
+#                  we were creating a new tkinter window: 
+#
+#                  self.window = window # self.window would be the new tkinter window
+#                                       # window is the tab received as an argument
+#
+#                  So once we set the self.window instance to be the tab (ttk.Frame)
+#                  we can add element to it as we do in a normal tkinter window (Tk())
+#
+# Author:          Jose Juan Jaramillo Polo
+# Notes:             
+# ==================================================================================
+
 import platform                         #let the script identifies the current platform (OS)
 from tkinter import *
-import datetime                         # for get current date time
+import datetime                         # To get current date time #TODO move to a new utilities class since I always need this everywhere
 from tkinter.ttk import Progressbar     # allows to use progressbar
 import tkinter as tk                    # needed to declare boolean and double vars por gui elements
-import platform                         #let the script identifies the current platform (OS)
-import os                               # for file management and os command execution
-import subprocess                       # run os commands in the background
-from tkinter import filedialog          # for browsing files
+import platform                         # let the script identifies the current platform (OS)
+import os                               # for file management and os command execution #TODO move to a new utilities class since I always need this everywhere
+import subprocess                       # run os commands in the background #TODO move to a new utilities class since I always need this everywhere
+from tkinter import filedialog          # for browsing files #TODO move to a new utilities class since I always need this everywhere
 
 class demoTabGuiClass:
     def __init__ (self, window,log):
         self.window = window
         self.log = log 
-        #TODO add the name of the function to all the selg.log calls eg. (demoTabGui::example)
+        #TODO add the name of the function to all the self.log calls eg. (demoTabGui::example)
         
         # variables to set the position in this window
         currentRow = 0
@@ -56,7 +76,7 @@ class demoTabGuiClass:
         self.reset_btn.grid(column=currentColumn, row=currentRow, pady= 10)
 
     def dummyFunction(self):
-        self.log.info("(demoTabGui::dummy) function")
+        self.log.info("(demoTabGuiClass::dummy) function")
 
     #TODO move to a new utilities class since I always need this everywhere
     def browseFile(self, response_txt, event=None ):
@@ -64,7 +84,7 @@ class demoTabGuiClass:
         if filePath != '':
             response_txt.delete('0','end')
             response_txt.insert('0',str(filePath))
-        self.log.info("(browseFile) Selected file: " + filePath)
+        self.log.info("(demoTabGuiClass::browseFile) Selected file: " + filePath)
 
     #TODO move to a new utilities class since I always need this everywhere
     def browseLocation(self, response_txt, event=None ):
@@ -72,11 +92,11 @@ class demoTabGuiClass:
         if folderPath != '':
             response_txt.delete('0','end')
             response_txt.insert('0',str(folderPath))
-        self.log.info("(browseFile) Selected folder: " + folderPath)
+        self.log.info("(demoTabGuiClass::browseLocation) Selected folder: " + folderPath)
    
     #TODO move to a new utilities class since I always need this everywhere
     def osCommandExecute(self,command, runInBackgroung=False):
-        self.log.info("(osCommandExecute) " + command)
+        self.log.info("(demoTabGuiClass::osCommandExecute) " + command)
         # os.system(command)
         if runInBackgroung:
             if platform.system() == "Linux":
@@ -88,4 +108,4 @@ class demoTabGuiClass:
 
     #TODO move to a new utilities class since I always need this everywhere
     def startFunc(self):
-        self.log.info("(startFunc) ---------------------------------->>> Start button clicked")
+        self.log.info("(demoTabGuiClass::startFunc) ---------------------------------->>> Start button clicked")

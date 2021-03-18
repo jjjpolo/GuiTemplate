@@ -1,3 +1,4 @@
+#TODO add header
 import platform                         #let the script identifies the current platform (OS)
 import os                               # for file management and os command execution
 import subprocess                       # To run os commands in the background
@@ -44,4 +45,4 @@ class mainGuiClass:
         self.log.info('(mainGuiClass::launchDeleteKnownhosts) Launching delete known_hosts file view')
 
     def __del__(self):
-        self.log.info("(GUI __del__ )Closing A700X Log Retriever Tool - BYE BYE")
+        self.log.info("(mainGuiClass::__del__ )Closing GUI - BYE BYE")
