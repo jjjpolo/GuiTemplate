@@ -12,7 +12,7 @@ from demoTabGui import demoTabGuiClass
 
 #..............................................GUI CLASS
 class mainGuiClass:
-    def __init__ (self, log):
+    def __init__ (self, log): # TODO receive utilities as an argument and use it
         self.log = log
         #creating main frame:
         self.window = Tk()
@@ -34,7 +34,7 @@ class mainGuiClass:
         
         self.tabControl.pack(expand = 1, fill ="both") 
 
-        self.myLogsGui = demoTabGuiClass(self.tab1, log)
+        self.myLogsGui = demoTabGuiClass(self.tab1, log) # TODO send utilities as an argument and use it
         
     
     def run(self):

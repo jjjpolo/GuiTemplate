@@ -29,7 +29,7 @@ import subprocess                       # run os commands in the background #TOD
 from tkinter import filedialog          # for browsing files #TODO move to a new utilities class since I always need this everywhere
 
 class demoTabGuiClass:
-    def __init__ (self, window,log):
+    def __init__ (self, window,log): # TODO receive utilities as an argument and use it
         self.window = window
         self.log = log 
         #TODO add the name of the function to all the self.log calls eg. (demoTabGui::example)
@@ -106,6 +106,5 @@ class demoTabGuiClass:
         else:
             os.system(command)
 
-    #TODO move to a new utilities class since I always need this everywhere
     def startFunc(self):
         self.log.info("(demoTabGuiClass::startFunc) ---------------------------------->>> Start button clicked")
