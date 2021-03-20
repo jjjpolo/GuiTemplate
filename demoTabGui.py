@@ -1,4 +1,4 @@
-#TODO-BUILDING add header
+#TODO-rev add header
 # ==================================================================================
 # File Name: demoTabGui.py
 # ==================================================================================
@@ -20,20 +20,17 @@
 
 import platform                         #let the script identifies the current platform (OS)
 from tkinter import *
-import datetime                         # To get current date time #TODO move to a new utilities class since I always need this everywhere
-from tkinter.ttk import Progressbar     # allows to use progressbar
+#from tkinter.ttk import Progressbar     # allows to use progressbar
 import tkinter as tk                    # needed to declare boolean and double vars por gui elements
 import platform                         # let the script identifies the current platform (OS)
-import os                               # for file management and os command execution #TODO move to a new utilities class since I always need this everywhere
-import subprocess                       # run os commands in the background #TODO move to a new utilities class since I always need this everywhere
-from tkinter import filedialog          # for browsing files #TODO move to a new utilities class since I always need this everywhere
 
 class demoTabGuiClass:
-    def __init__ (self, window,log): # TODO receive utilities as an argument and use it
+    def __init__ (self, window,log, utilities):
+        # Global variables that are reachable by whoever needs it. 
         self.window = window
         self.log = log 
-        #TODO add the name of the function to all the self.log calls eg. (demoTabGui::example)
-        
+        self.utilities = utilities
+                
         # variables to set the position in this window
         currentRow = 0
         currentColumn = 0
@@ -60,7 +57,7 @@ class demoTabGuiClass:
         self.userComment_txt.grid(column = currentColumn_frame, row = currentRow_frame)
          #||||||||||||||||||||column separator
         currentColumn_frame = currentColumn_frame + 1
-        self.browse_btn = Button(self.settings_labelframe, text="...", command = lambda: self.browseFile(self.userComment_txt))
+        self.browse_btn = Button(self.settings_labelframe, text="...", command = lambda: self.utilities.browseFile(self.userComment_txt))
         self.browse_btn.grid(column=currentColumn_frame, row=currentRow_frame, pady= 10)
         #TODO add a checkBox element her to demonstrate how to use it with boolean variables.
         #*****************************************************FRAME SEPARATOR - END
@@ -77,34 +74,6 @@ class demoTabGuiClass:
 
     def dummyFunction(self):
         self.log.info("(demoTabGuiClass::dummy) function")
-
-    #TODO move to a new utilities class since I always need this everywhere
-    def browseFile(self, response_txt, event=None ):
-        filePath = filedialog.askopenfilename()
-        if filePath != '':
-            response_txt.delete('0','end')
-            response_txt.insert('0',str(filePath))
-        self.log.info("(demoTabGuiClass::browseFile) Selected file: " + filePath)
-
-    #TODO move to a new utilities class since I always need this everywhere
-    def browseLocation(self, response_txt, event=None ):
-        folderPath = filedialog.askdirectory()
-        if folderPath != '':
-            response_txt.delete('0','end')
-            response_txt.insert('0',str(folderPath))
-        self.log.info("(demoTabGuiClass::browseLocation) Selected folder: " + folderPath)
-   
-    #TODO move to a new utilities class since I always need this everywhere
-    def osCommandExecute(self,command, runInBackgroung=False):
-        self.log.info("(demoTabGuiClass::osCommandExecute) " + command)
-        # os.system(command)
-        if runInBackgroung:
-            if platform.system() == "Linux":
-                os.system(command + " &")
-            else:
-                subprocess.Popen(command) # run this command in the background
-        else:
-            os.system(command)
 
     def startFunc(self):
         self.log.info("(demoTabGuiClass::startFunc) ---------------------------------->>> Start button clicked")

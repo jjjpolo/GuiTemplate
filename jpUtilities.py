@@ -45,17 +45,17 @@ class jpUtilitiesClass:
         self.log = log
     
     # add a comment to explain how to use the response_txt and event arguments
-    def browseFile_GUI(self, response_txt=None, event=None ):
+    def browseFile(self, response_txt=None, event=None ):
         filePath = filedialog.askopenfilename()
         if response_txt is not None:
             if filePath != '':
                 response_txt.delete('0','end')
                 response_txt.insert('0',str(filePath))
-        self.log.info("(jpUtilitiesClass::browseFile_GUI) Selected file: " + filePath)
+        self.log.info("(jpUtilitiesClass::browseFile) Selected file: " + filePath)
         return filePath
       
     # add a comment to explain how to use the response_txt and event arguments
-    def browseLocation_GUI(self, response_txt=None, event=None ):
+    def browseLocation(self, response_txt=None, event=None ):
         folderPath = filedialog.askdirectory()
         if response_txt is not None:
             if folderPath != '':
@@ -80,8 +80,6 @@ class jpUtilitiesClass:
     def ping(self,host):
         # Option for the number of packets as a function of
         param = '-n' if platform.system().lower()=='windows' else '-c'
-
         # Building the command. Ex: "ping -c 1 google.com"
         command = ['ping', param, '1', host]
-
         return subprocess.call(command) == 0

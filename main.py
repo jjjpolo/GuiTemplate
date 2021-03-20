@@ -32,7 +32,7 @@ def main():
     log.info("Ping to www.google.com: " + str(utilities.ping("www.google.com")))
 
     # TODO send utilities as an argument
-    myGui = mainGuiClass(log)
+    myGui = mainGuiClass(log, utilities)
     #print(utilities.browseLocation_GUI())  # In case of need to use utilities having a TK() instance
                                             # use it after creating the main GUI
     myGui.run()
