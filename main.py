@@ -29,7 +29,7 @@ def main():
     #Creating a utilities object that we can use everywhere passing it as reference
     utilities = jpUtilitiesClass(log)
     log.info("Ping to www.google.com: " + str(utilities.ping("www.google.com")))
-
+    
     myGui = mainGuiClass(log, utilities)
     #log.info(utilities.browseLocation_GUI())  # In case you need to use utilities having a TK() instance
                                             # use it after creating the main GUI

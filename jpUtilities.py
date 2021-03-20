@@ -38,6 +38,8 @@ import platform                         # let the script identifies the current 
 import os                               # for file management and os command execution 
 import subprocess                       # run os commands in the background
 from tkinter import filedialog          # for browsing files 
+import os
+import zipfile
 
 class jpUtilitiesClass:
 
@@ -84,6 +86,22 @@ class jpUtilitiesClass:
         # Building the command. Ex: "ping -c 1 google.com"
         command = ['ping', param, '1', host]
         return subprocess.call(command) == 0
+
+
+    # Receives a path of a folder that will be zipped in the zipFilePath location 
+    # received as an argument. E.g. self.utilities.zipdir('./test','./test.zip')  
+    def zipdir(self, pathFolderToBeZipped, zipFilePath):
+        self.log.info("(jpUtilities::zipdir) Creating " + zipFilePath + " file")
+        zipf = zipfile.ZipFile(zipFilePath, 'w', zipfile.ZIP_DEFLATED)
+        # ziph is zipfile handle
+        for root, dirs, files in os.walk(pathFolderToBeZipped):
+            for file in files:
+                self.log.info("(jpUtilities::zipdir) Zipping file: " + file)
+                zipf.write(os.path.join(root, file), 
+                        os.path.relpath(os.path.join(root, file), 
+                                        os.path.join(pathFolderToBeZipped, '..')))
+        zipf.close()
+      
 
     def __del__(self):
         self.log.debug("(jpUtilities::__del__) Destroying object")
