@@ -46,7 +46,7 @@ class mainGuiClass:
         self.window.config(menu=self.menubar)
         self.tools = Menu(self.menubar, tearoff=0)
         self.menubar.add_cascade(label='Tools', menu=self.tools)
-        self.tools.add_command(label='Delete known_hosts file', command=self.launchDeleteKnownHosts)
+        self.tools.add_command(label='Demo menubar command', command=self.dummyFunction)
 
         # Inserting tab control.
         self.tabControl = ttk.Notebook(self.window) 
@@ -61,9 +61,8 @@ class mainGuiClass:
     def run(self):
         self.window.mainloop()        
 
-    # TODO change this function to something else more useful
-    def launchDeleteKnownHosts(self):
-        self.log.info('(mainGuiClass::launchDeleteKnownhosts) Launching delete known_hosts file view')
+    def dummyFunction(self):
+        self.log.info('(mainGuiClass::dummyfunction) Dummy function')
 
     def __del__(self):
         self.log.debug("(mainGuiClass::__del__ )Closing GUI - BYE BYE")

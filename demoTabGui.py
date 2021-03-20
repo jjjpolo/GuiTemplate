@@ -18,8 +18,8 @@
 # ==================================================================================
 
 from tkinter import *
-#from tkinter.ttk import Progressbar     # allows to use progressbar
 import tkinter as tk                    # needed to declare boolean and double vars por gui elements
+from tkinter import messagebox
 from demoLabelFrame import demoLableFrameClass
 
 class demoTabGuiClass:
@@ -47,14 +47,16 @@ class demoTabGuiClass:
         self.start_btn.grid(column=currentColumn, row=currentRow, pady= 10)
         #||||||||||||||||||||column separator
         currentColumn =currentColumn+1
-        self.reset_btn = Button(self.window, text="Exit", command = self.dummyFunction)
+        self.reset_btn = Button(self.window, text="Dummy", command = self.dummyFunction)
         self.reset_btn.grid(column=currentColumn, row=currentRow, pady= 10)
 
     def dummyFunction(self):
-        self.log.info("(demoTabGuiClass::dummy) function")
+        self.log.info("(demoTabGuiClass::dummyFunction) Dummy function")
 
     def startFunc(self):
         self.log.info("(demoTabGuiClass::startFunc) ---------------------------------->>> Start button clicked")
+        msg = "State of checkbox is: " + str(self.demoUsingLabelFrame.chk_state.get()) + '\n Selected file: ' + self.demoUsingLabelFrame.demo_txt.get()
+        messagebox.showinfo(message=msg, title="Demo MsgBox")
 
     def __del__(self):
         self.log.debug("(demoTabGuiClass::__del__) Destroying window")

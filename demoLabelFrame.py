@@ -33,13 +33,13 @@ class demoLableFrameClass:
         self.userComment_lbl.grid (column = currentColumn, row = currentRow)
         #||||||||||||||||||||column separator
         currentColumn = currentColumn + 1
-        self.userComment_txt = Entry(self.window,width=50, justify = CENTER)
-        self.userComment_txt.delete(0,END)
-        self.userComment_txt.insert(0,"")
-        self.userComment_txt.grid(column = currentColumn, row = currentRow)
+        self.demo_txt = Entry(self.window,width=50, justify = CENTER)
+        self.demo_txt.delete(0,END)
+        self.demo_txt.insert(0,"")
+        self.demo_txt.grid(column = currentColumn, row = currentRow)
          #||||||||||||||||||||column separator
         currentColumn = currentColumn + 1
-        self.browse_btn = Button(self.window, text="...", command = lambda: self.utilities.browseFile(self.userComment_txt))
+        self.browse_btn = Button(self.window, text="...", command = lambda: self.utilities.browseFile(self.demo_txt))
         self.browse_btn.grid(column=currentColumn, row=currentRow, pady= 10)
         #----------------------------------------row separator
         currentRow = currentRow + 1
