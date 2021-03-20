@@ -1,14 +1,33 @@
-#TODO add header
-import platform                         #let the script identifies the current platform (OS)
-import os                               # for file management and os command execution
-import subprocess                       # To run os commands in the background
-import datetime                         # To get current date time
+# ==================================================================================
+# File Name: mainGui.py
+# ==================================================================================
+# Purpose:        * Here is the main assembling of the GUI. self.window = Tk() is 
+#                   created here so this class does not receive a Tk() object
+#                   because the main one is created from here.
+#                 * Global elements such as: Tab, Menubar, Frames or any other 
+#                   element that needs to be always available needs to be created here.
+#                   In case you don't need special elements such as tabs just delete
+#                   the menubar and tab demos and add whatever element you want
+#                   in this file. 
+#                 * This class receives as an argument: a logger object so if you 
+#                   need to print something you should prefer:log.info(), log.debug, 
+#                   and so on. (look at loggingWrepper.py). You should pass it as an
+#                   argument to any other GUI object or class (like the self.demoTabGui)
+#                   that migh need it.
+#                 * It also includes a reference to a utilities object so ping, 
+#                   browseFile, browseLocation and some others functionalities are
+#                   always reachable throug this object. You should pass it as an
+#                   argument to any other GUI object or class (like the self.demoTabGui)
+#                   that migh need it.
+#
+#
+# Author:           Jose Juan Jaramillo Polo
+# Notes:             
+# ==================================================================================
 from tkinter import *
-from tkinter.ttk import Progressbar     # To use progressbar
 import tkinter as tk                    # Needed to use boolean and double vars for gui elements
-from tkinter import ttk                 # for adding tabs
-
-from demoTabGui import demoTabGuiClass
+from tkinter import ttk                 # To add tabs
+from demoTabGui import demoTabGuiClass  # The content that the tab will contain in a class way.
 
 #..............................................GUI CLASS
 class mainGuiClass:
@@ -19,7 +38,7 @@ class mainGuiClass:
 
         #creating main frame:
         self.window = Tk()
-        self.window.geometry('500x200') # x y 
+        self.window.geometry('550x200') # width x height 
         self.window.title("Gui Template")
 
         #menubar

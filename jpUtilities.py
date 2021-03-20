@@ -64,7 +64,8 @@ class jpUtilitiesClass:
         self.log.info("(jpUtilitiesClass::browseLocation) Selected folder: " + folderPath)
         return folderPath
    
-    #TODO add comment
+    # Executes a CMD command on either windows or linux systems, if it is needed to be executed in the
+    # background pass a True value to the runInBackgroung argument. 
     def osCommandExecute(self,command, runInBackgroung=False):
         if runInBackgroung:
             self.log.info("(demoTabGuiClass::osCommandExecute) [running in back ground] " + command)
@@ -76,7 +77,7 @@ class jpUtilitiesClass:
             self.log.info("(demoTabGuiClass::osCommandExecute) " + command)
             os.system(command)
 
-    # TODO-rev add pinger method
+    # Pings a host, displays the process, and returns True or False if the host is reachable or not. 
     def ping(self,host):
         # Option for the number of packets as a function of
         param = '-n' if platform.system().lower()=='windows' else '-c'

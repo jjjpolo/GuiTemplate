@@ -17,7 +17,6 @@ from loggingWrapper import createLogger, logging    #importing only the function
 from jpUtilities import jpUtilitiesClass
 from mainGui import mainGuiClass
 
-
 # ----------------------------------------------------------------------------------
 # Name:            Main
 # Purpose:         Starts the main function from the main file.
@@ -31,9 +30,8 @@ def main():
     utilities = jpUtilitiesClass(log)
     log.info("Ping to www.google.com: " + str(utilities.ping("www.google.com")))
 
-    # TODO send utilities as an argument
     myGui = mainGuiClass(log, utilities)
-    #print(utilities.browseLocation_GUI())  # In case of need to use utilities having a TK() instance
+    #log.info(utilities.browseLocation_GUI())  # In case you need to use utilities having a TK() instance
                                             # use it after creating the main GUI
     myGui.run()
 
