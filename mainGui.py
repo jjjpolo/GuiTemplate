@@ -36,19 +36,19 @@ class mainGuiClass:
         self.log = log
         self.utilities = utilities
 
-        #creating main frame:
+        # Creating main Tk window.
         self.window = Tk()
-        self.window.geometry('550x200') # width x height 
+        self.window.geometry('700x200') # width x height 
         self.window.title("Gui Template")
 
-        #menubar
+        # Inserting a menubar GUI element.
         self.menubar = Menu(self.window)
         self.window.config(menu=self.menubar)
         self.tools = Menu(self.menubar, tearoff=0)
         self.menubar.add_cascade(label='Tools', menu=self.tools)
         self.tools.add_command(label='Delete known_hosts file', command=self.launchDeleteKnownHosts)
 
-        # Tab elements
+        # Inserting tab control.
         self.tabControl = ttk.Notebook(self.window) 
         self.tab1 = ttk.Frame(self.tabControl)          
         self.tabControl.add(self.tab1, text ='Demo Tab1')         
@@ -57,7 +57,7 @@ class mainGuiClass:
         # Creating a new GUI where self.tab1 will be the self.window container similar to mainGui.py::self.window=TK()
         self.demoTabGui = demoTabGuiClass(self.tab1, self.log, self.utilities)
         
-    # This method is only needed here because constructor will buil (add) all the neede GUI elements
+    # This method is only needed here because constructor will build (add) all the needed GUI elements
     def run(self):
         self.window.mainloop()        
 
@@ -66,4 +66,4 @@ class mainGuiClass:
         self.log.info('(mainGuiClass::launchDeleteKnownhosts) Launching delete known_hosts file view')
 
     def __del__(self):
-        self.log.info("(mainGuiClass::__del__ )Closing GUI - BYE BYE")
+        self.log.debug("(mainGuiClass::__del__ )Closing GUI - BYE BYE")

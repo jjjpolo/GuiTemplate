@@ -17,11 +17,10 @@
 # Notes:             
 # ==================================================================================
 
-import platform                         #let the script identifies the current platform (OS)
 from tkinter import *
 #from tkinter.ttk import Progressbar     # allows to use progressbar
 import tkinter as tk                    # needed to declare boolean and double vars por gui elements
-import platform                         # let the script identifies the current platform (OS)
+from demoLabelFrame import demoLableFrameClass
 
 class demoTabGuiClass:
     def __init__ (self, window,log, utilities):
@@ -33,33 +32,13 @@ class demoTabGuiClass:
         # variables to set the position in this window
         currentRow = 0
         currentColumn = 0
-                
-        # TODO 1 move the content of frame to a new class file so I can create the frame as an object 
-        # self.settings_labelframe and then pass it as an argument to the constructor of the frame 
-        # class as I did with the tab element
-        self.settings_labelframe = LabelFrame(self.window, text = "Group",width=100,height=100)
+
+        #----------------------------------------row separator                
+        # Inserting a Label Frame GUI in this window.
+        self.settings_labelframe = LabelFrame(self.window, text = "LabelFrame - Group",width=100,height=100)
         self.settings_labelframe.grid(row=currentRow, column=currentColumn, columnspan = 2, padx=10,pady=3, ipadx=3)
-        #*****************************************************FRAME SEPARATOR
-        # variables to set the position in this widow(frame)
-        currentRow_frame= 0
-        currentColumn_frame = 0
-        #----------------------------------------row separator
-        currentRow_frame = currentRow_frame + 1
-        currentColumn_frame = 0
-        self.userComment_lbl = Label(self.settings_labelframe, text="Name folder comment: ", font=("Arial Bold", 10))
-        self.userComment_lbl.grid (column = currentColumn_frame, row = currentRow_frame)
-        #||||||||||||||||||||column separator
-        currentColumn_frame = currentColumn_frame + 1
-        self.userComment_txt = Entry(self.settings_labelframe,width=50, justify = CENTER)
-        self.userComment_txt.delete(0,END)
-        self.userComment_txt.insert(0,"")
-        self.userComment_txt.grid(column = currentColumn_frame, row = currentRow_frame)
-         #||||||||||||||||||||column separator
-        currentColumn_frame = currentColumn_frame + 1
-        self.browse_btn = Button(self.settings_labelframe, text="...", command = lambda: self.utilities.browseFile(self.userComment_txt))
-        self.browse_btn.grid(column=currentColumn_frame, row=currentRow_frame, pady= 10)
-        #TODO add a checkBox element her to demonstrate how to use it with boolean variables.
-        #*****************************************************FRAME SEPARATOR - END
+        # Inserting content to LabelFrame by passing it as a reference to be the self.window in demoLableFrameClass (POO)
+        self.demoUsingLabelFrame = demoLableFrameClass(self.settings_labelframe, self.log, self.utilities) 
 
         #----------------------------------------row separator
         currentRow = currentRow + 1
@@ -76,3 +55,6 @@ class demoTabGuiClass:
 
     def startFunc(self):
         self.log.info("(demoTabGuiClass::startFunc) ---------------------------------->>> Start button clicked")
+
+    def __del__(self):
+        self.log.debug("(demoTabGuiClass::__del__) Destroying window")

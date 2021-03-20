@@ -68,13 +68,13 @@ class jpUtilitiesClass:
     # background pass a True value to the runInBackgroung argument. 
     def osCommandExecute(self,command, runInBackgroung=False):
         if runInBackgroung:
-            self.log.info("(demoTabGuiClass::osCommandExecute) [running in back ground] " + command)
+            self.log.info("(jpUtilities::osCommandExecute) [running in back ground] " + command)
             if platform.system() == "Linux":
                 os.system(command + " &")
             else:
                 subprocess.Popen(command) # run this command in the background
         else:
-            self.log.info("(demoTabGuiClass::osCommandExecute) " + command)
+            self.log.info("(jpUtilities::osCommandExecute) " + command)
             os.system(command)
 
     # Pings a host, displays the process, and returns True or False if the host is reachable or not. 
@@ -84,3 +84,6 @@ class jpUtilitiesClass:
         # Building the command. Ex: "ping -c 1 google.com"
         command = ['ping', param, '1', host]
         return subprocess.call(command) == 0
+
+    def __del__(self):
+        self.log.debug("(jpUtilities::__del__) Destroying object")
